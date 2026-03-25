@@ -1,0 +1,22 @@
+{
+  "appointments": [
+    {
+      "id": "8025c261-fb01-47d1-b250-b18b8ff27fa9",
+      "slotId": "3ed34dd4-cf75-4aaa-9364-4d4467f262fe",
+      "doctorId": "dr-patel",
+      "doctorName": "Dr. Priya Patel",
+      "specialty": "Neurologist",
+      "patient": {
+        "firstName": "John",
+        "lastName": "Smith",
+        "dob": "January 15, 1990",
+        "phone": "401-555-0100",
+        "email": "john@gmail.com",
+        "smsOptIn": false
+      },
+      "reason": "frequent headaches",
+      "datetime": "2026-03-30T09:00:00.000Z",
+      "bookedAt": "2026-03-25T23:26:25.411Z"
+    }
+  ]
+}
