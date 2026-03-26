@@ -111,8 +111,8 @@ router.post('/initiate-call', async (req, res) => {
           messages: [{ role: 'system', content: systemPrompt }]
         },
         voice: {
-          provider: 'playht',
-          voiceId: 'jennifer'
+          provider: 'openai',
+          voiceId: 'alloy'
         }
       }
     };
