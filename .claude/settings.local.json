@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s \"http://localhost:3001/api/appointments/slots/dr-chen?limit=3\")",
+      "Bash(node -e \":*)",
+      "Bash(curl -s \"http://localhost:3001/api/appointments/slots/dr-chen?day=wednesday&limit=3\")",
+      "Bash(curl -s \"http://localhost:3001/api/appointments/slots/dr-okafor?day=monday&limit=3\")"
+    ]
+  }
+}
