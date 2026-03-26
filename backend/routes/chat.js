@@ -44,7 +44,7 @@ function buildSlotsContext() {
     const slotsText = Object.entries(grouped)
       .slice(0, 20)
       .map(([date, times]) =>
-        `  ${date}:\n${times.map(t => `    [${t.slotId}] ${t.time}`).join('\n')}`
+        `  ${date}:\n${times.map(t => `    ${t.time} (INTERNAL_ID:${t.slotId})`).join('\n')}`
       ).join('\n');
 
     return `${doctor.name} (${doctor.specialty} | Available: ${doctor.availableDays.join(', ')}):\n${slotsText}`;
@@ -84,7 +84,7 @@ IMPORTANT RULES:
 - Keep responses brief (2-3 sentences max when possible)
 - If the patient's condition does not match ANY of our specialties, say: "I'm sorry, our practice doesn't currently treat that condition. I'd recommend speaking with your primary care physician who can provide a referral."
 - When presenting slot options, format them clearly and number them (1., 2., 3.)
-- Include the slot ID in parentheses after each option so you can reference it later
+- NEVER show slot IDs or UUIDs to the patient — they are for internal use only in the <BOOKING> tag
 
 AVAILABLE APPOINTMENT SLOTS (use these slot IDs in the BOOKING confirmation):
 ${slotsContext}
