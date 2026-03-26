@@ -101,30 +101,19 @@ router.post('/initiate-call', async (req, res) => {
     const callPayload = {
       phoneNumberId: process.env.VAPI_PHONE_NUMBER_ID,
       customer: {
-        number: formattedPhone,
-        ...(patient?.firstName && { name: `${patient.firstName} ${patient.lastName || ''}`.trim() })
+        number: formattedPhone
       },
       assistant: {
+        firstMessage,
         model: {
           provider: 'openai',
-          model: 'gpt-4o-mini',
-          systemPrompt,
-          maxTokens: 512
+          model: 'gpt-4o',
+          messages: [{ role: 'system', content: systemPrompt }]
         },
         voice: {
-          provider: 'openai',
-          voiceId: 'alloy'
-        },
-        firstMessage,
-        silenceTimeoutSeconds: 30,
-        maxDurationSeconds: 600,
-        backgroundSound: 'off',
-        backchannelingEnabled: false
-      },
-      metadata: {
-        sessionId: sessionId || null,
-        source: 'chat-handoff',
-        patientPhone: formattedPhone
+          provider: 'playht',
+          voiceId: 'jennifer'
+        }
       }
     };
 
