@@ -171,7 +171,6 @@ export default function ChatInterface() {
   const [sessionId] = useState(getOrCreateSessionId);
   const [sessionData, setSessionData] = useState({});
   const [smsOptIn, setSmsOptIn] = useState(false);
-  const [showSmsOptIn, setShowSmsOptIn] = useState(false);
   const [isBooked, setIsBooked] = useState(false);
   const [bookedEmail, setBookedEmail] = useState('');
   const [error, setError] = useState('');
@@ -188,7 +187,6 @@ export default function ChatInterface() {
     setIsTyping(false);
     setSessionData({});
     setSmsOptIn(false);
-    setShowSmsOptIn(false);
     setIsBooked(false);
     setBookedEmail('');
     setError('');
@@ -230,14 +228,7 @@ export default function ChatInterface() {
       setMessages(prev => [...prev, { role: 'assistant', content: data.message }]);
 
       if (data.sessionData && Object.keys(data.sessionData).length > 0) {
-        setSessionData(prev => {
-          const merged = { ...prev, ...data.sessionData };
-          // Show SMS opt-in once we've collected the phone number
-          if (merged.phone && !showSmsOptIn) {
-            setShowSmsOptIn(true);
-          }
-          return merged;
-        });
+        setSessionData(prev => ({ ...prev, ...data.sessionData }));
       }
 
       if (data.booking) {
@@ -254,7 +245,7 @@ export default function ChatInterface() {
         content: "I'm having trouble connecting right now. Please try again in a moment."
       }]);
     }
-  }, [sessionId, showSmsOptIn]);
+  }, [sessionId]);
 
   const processBooking = async (booking, currentSmsOptIn) => {
     try {
@@ -419,7 +410,7 @@ export default function ChatInterface() {
       </div>
 
       {/* ── SMS Opt-in ── */}
-      {showSmsOptIn && !isBooked && (
+      {!isBooked && (
         <div style={{ borderTop: '1px solid rgba(255,255,255,0.05)', flexShrink: 0 }}>
           <SmsOptIn checked={smsOptIn} onChange={handleSmsChange} />
         </div>

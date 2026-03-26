@@ -139,15 +139,18 @@ router.post('/send-confirmation', async (req, res) => {
     const { dateStr, timeStr } = formatDateTime(appointment.datetime);
 
     const { data, error } = await resend.emails.send({
-      from: 'Kyron Medical <noreply@kyronmedical.com>',
+      from: 'Kyron Medical <onboarding@resend.dev>',
       to: [appointment.patient.email],
       subject: `Appointment Confirmed: ${dateStr} at ${timeStr} — ${appointment.doctorName}`,
       html: buildEmailHTML(appointment)
     });
 
     if (error) {
-      console.error('[Email] Resend error:', error);
+      console.error('[Email] Resend error:', JSON.stringify(error, null, 2));
       return res.status(500).json({ error: 'Failed to send email', details: error });
+    }
+    if (!data?.id) {
+      console.error('[Email] Resend returned no ID — possible silent failure');
     }
 
     console.log(`[Email] Confirmation sent to ${appointment.patient.email} (ID: ${data?.id})`);

@@ -17,6 +17,42 @@
       "reason": "frequent headaches",
       "datetime": "2026-03-30T09:00:00.000Z",
       "bookedAt": "2026-03-25T23:26:25.411Z"
+    },
+    {
+      "id": "4384e864-3633-47b5-a18c-236c8bb29a38",
+      "slotId": "fb76867f-bab7-4f2f-b70c-482cf70fecff",
+      "doctorId": "dr-rivera",
+      "doctorName": "Dr. Marcus Rivera",
+      "specialty": "Dermatologist",
+      "patient": {
+        "firstName": "Bonnie",
+        "lastName": "Anne",
+        "dob": "January 1, 2002",
+        "phone": "2403206924",
+        "email": "mathewpadath@gmail.com",
+        "smsOptIn": true
+      },
+      "reason": "rashes",
+      "datetime": "2026-03-27T09:00:00.000Z",
+      "bookedAt": "2026-03-26T00:09:40.978Z"
+    },
+    {
+      "id": "2b5ab73c-08a4-4e3e-92d9-f1f299bd7c3c",
+      "slotId": "1bcdcd1a-b37d-4685-98d1-993972449c4d",
+      "doctorId": "dr-chen",
+      "doctorName": "Dr. Sarah Chen",
+      "specialty": "Cardiologist",
+      "patient": {
+        "firstName": "Charlie",
+        "lastName": "Dickinson",
+        "dob": "01/01/1998",
+        "phone": "2403206924",
+        "email": "mathewpadath@gmail.com",
+        "smsOptIn": true
+      },
+      "reason": "heart check",
+      "datetime": "2026-03-27T09:00:00.000Z",
+      "bookedAt": "2026-03-26T00:19:44.390Z"
     }
   ]
 }

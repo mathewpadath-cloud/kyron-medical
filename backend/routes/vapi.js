@@ -106,14 +106,14 @@ router.post('/initiate-call', async (req, res) => {
       },
       assistant: {
         model: {
-          provider: 'anthropic',
-          model: 'claude-sonnet-4-20250514',
+          provider: 'openai',
+          model: 'gpt-4o-mini',
           systemPrompt,
           maxTokens: 512
         },
         voice: {
-          provider: '11labs',
-          voiceId: 'rachel'
+          provider: 'openai',
+          voiceId: 'alloy'
         },
         firstMessage,
         silenceTimeoutSeconds: 30,
@@ -216,14 +216,14 @@ router.post('/server-message', async (req, res) => {
       return res.json({
         assistant: {
           model: {
-            provider: 'anthropic',
-            model: 'claude-sonnet-4-20250514',
+            provider: 'openai',
+            model: 'gpt-4o-mini',
             systemPrompt: buildVapiSystemPrompt(null, null) + (patientContext ? `\n\nPATIENT HISTORY:\n${patientContext}` : ''),
             maxTokens: 512
           },
           voice: {
-            provider: '11labs',
-            voiceId: 'rachel'
+            provider: 'openai',
+            voiceId: 'alloy'
           },
           firstMessage: patientContext
             ? `Welcome back to Kyron Medical! I see you've been with us before. How can I help you today?`
